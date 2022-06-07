@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     const statusQuery = `&status=${status}`
-    axios.get(`${process.env.REACT_APP_API}/character?page=${page}${status !== 'all' && statusQuery}`)
+    axios.get(`https://rickandmortyapi.com/api/character?page=${page}${status !== 'all' && statusQuery}`)
     .then(res => {
       setCharacters(res.data)
       setLoading(false)
@@ -39,6 +39,11 @@ function App() {
       {!loading && characters.results.map(character => {
         return <Card character={character}/>
       })}
+      <div>
+        <form>
+          <label htmlFor="name">name</label>
+        </form>
+      </div>
       <PageButtons page={page} setPage={setPage}/>
     </div>
   );
